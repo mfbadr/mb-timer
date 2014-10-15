@@ -14,13 +14,23 @@
     <script src="js/app.js"></script>
     <script src="js/main_controller.js"></script>
   </head>
-  <body ng-app="mb-timer" ng-controller="MainCtrl">
+  <body ng-app="mb-timer">
     <ion-pane>
       <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
+        <h1 class="title">mb-timer</h1>
       </ion-header-bar>
-      <ion-content>
-        <h2>{{title}}</h2>
+      <ion-content ng-controller="MainCtrl">
+        <h3>Add minutes</h3>
+        <div class="button-bar"><a ng-click="addMinutes(1)" class="button">+1</a><a ng-click="addMinutes(5)" class="button">+5</a><a ng-click="addMinutes(10)" class="button">+10</a></div>
+        <h3>Add seconds</h3>
+        <div class="button-bar"><a ng-click="addSeconds(1)" class="button">+1</a><a ng-click="addSeconds(5)" class="button">+5</a><a ng-click="addSeconds(10)" class="button">+10</a></div>
+        <button ng-click="startTimer()" class="button button-block button-full">Start a timer for {{minutes}} minutes and {{time % 60}} seconds</button>
+        <button ng-click="clearTime()" class="button button-block button-full">
+          <p>Clear time</p>
+        </button>
+        <!--h2 {{timeLeft / 60}} minutes remain...-->
+        <h2>{{minutesLeft(timeLeft)}} minutes and {{timeLeft % 60}} seconds remain...</h2>
+        <div ng-show="timerDone" class="bar bar-assertive">TIME IS UP</div>
       </ion-content>
     </ion-pane>
   </body>
