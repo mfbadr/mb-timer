@@ -14,6 +14,7 @@
       $scope.time += timeAdded * 60;
       $scope.minutes = Math.floor($scope.time / 60);
     };
+
     $scope.addSeconds = function(timeAdded){
       timeAdded = parseInt(timeAdded);
       $scope.time += timeAdded;
@@ -33,7 +34,9 @@
         if($scope.timeLeft === 0){
           $scope.timerDone = true;
           $interval.cancel(runTimer);
+          navigator.vibrate(3000);
         }
+
       }, 1000);
     };
 
